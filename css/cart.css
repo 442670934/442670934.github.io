@@ -1,0 +1,55 @@
+h1{
+	color: #FFFFFF;
+}
+.sotet_ul{
+	padding-left:0 ;
+	padding-right:0 ;
+	color: #FFFFFF;
+}
+.sotet_ul li{
+	position: relative;
+min-height: 77px;
+line-height: 16px;
+padding: 16px 2.5%;
+color: #c6d4df;
+font-size: 12px;
+background: #16202D;
+background-color: rgba(0,0,0,0.2);
+margin-bottom: 2px;
+list-style: none;
+}
+.left{
+	float: left;
+}
+.right{
+	float: right;
+}
+.money{
+	padding-left: 20px;
+	text-align: center;
+	 
+}
+.name_icon {
+	overflow: hidden;
+	white-space:nowrap;
+}
+.checkout_car{
+	background: #16202D;
+	background: rgba( 0, 0, 0, 0.2 );
+    padding: 16px;
+    color: #c6d4df;
+    font-size: 12px;
+    height:124px;
+}
+.checkout_car button{
+	padding: 0 15px;
+    font-size: 15px;
+    line-height: 30px;
+    border-radius: 2px;
+    display: block;
+    background: #658004;
+    background: -webkit-linear-gradient( top, rgba(121,153,5,1) 5%, rgba(83,105,4,1) 95%);
+    color: #D2E885 ;
+    border: none;
+    text-shadow: -1px -1px 0px rgba( 0, 0, 0, 0.1 );
+}
