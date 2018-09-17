@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="./css/index.css">
+    <link rel="stylesheet" href="./css/login.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./bootstrap/css/bootstrap.min.css">
@@ -10,7 +10,8 @@
     <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon"/> 
     <script src="./js/jquery-3.3.1.min.js"></script>
     <script src="./bootstrap/js/bootstrap.min.js"></script>
-    <title>JHblog—JH博客</title>
+    <script src="./js/md5.js"></script>
+    <title>JHblog—JH博客-登陆</title>
 </head>
 <body>
     <nav class="navbar navbar-expand-sm bg-light">
@@ -57,51 +58,21 @@
     </nav>
     <script src="../js/header.js"></script>
     <div class="main">
-        <div class="content card">
-            <nav class="card-header">
-                <div class="nav nav-tabs" id="nav-tab">
-                    <a class="nav-item nav-link" data-toggle="tab" href="#nav-all" _id='all' first=true>ALL</a>
-                </div>
-            </nav>
-            <div class="tab-content card-body" id="nav-tabContent">
-                <div class="tab-pane fade" id="nav-all">
-                	<div class="media-box">
-                		<div class="media border">
-	                        <i class="media-index">999</i>
-	                        <div class="media-body">
-	                            <h4>我的第一篇文章</h4>
-	                            <p>我的第一篇文章，测试用</p>
-	                            <b>
-	                                <span class="body-author">admin</span>
-	                                <span class="body-time">6小时前</span>
-	                            </b>
-	                        </div>
-	                    </div>
-                	</div>
-                	<div class="pages-box">
-		                <ul class="pagination">
-		                    <li class="page-item" page=1><a class="page-link">&laquo;</a></li>
-		                    <li class="page-item" page=1><a class="page-link">1</a></li>
-		                    <li class="page-item" page=2><a class="page-link">&raquo;</a></li>
-		                </ul>
-		            </div>
-                    <!--<div class="media border">
-                        <i class="media-index">999</i>
-                        <div class="media-body">
-                            <h4>我的第一篇文章</h4>
-                            <p>我的第一篇文章，测试用</p>
-                            <b>
-                                <span class="body-author">admin</span>
-                                <span class="body-time">6小时前</span>
-                                <span class="body-views">16666</span>
-                                <span class="body-collection">16666</span> 
-                            </b>
-                        </div>
-                    </div>-->
-                </div>
+        <div class="card login-box">
+            <h4>登陆</h4>
+            <div class="form-group">
+                <label for="username">用户名</label>
+                <input type="text" class="form-control" id="username">
+                <small id="usernameHelp" class="form-text text-danger">&nbsp;</small>
             </div>
-            
+            <div class="form-group">
+                <label for="password">密码</label>
+                <input type="password" class="form-control" id="password">
+                <small id="passwordHelp" class="form-text text-danger">&nbsp;</small>
+            </div>
+            <button type="button" class="btn btn-lg btn-block" id="login-btn">马上登陆</button>
         </div>
+        <canvas class="bg-canvas"></canvas>
     </div>
     <div class="jumbotron bg-light">
         <div class="content">
@@ -111,6 +82,7 @@
     <div class="error-box">
         <p>这是一个错误提示</p>
     </div>
-    <script src="./js/index.js"></script>
 </body>
+<script src="./js/login.js"></script>
+<script src="./js/login-canvas.js"></script>
 </html>

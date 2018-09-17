@@ -1,0 +1,135 @@
+    body{
+    	min-width: 300px;
+    	background:#1B2838 !important;
+    	max-width: 1200px;
+    }
+    #shangnav{
+    	margin: 0 !important;
+    	padding: 0 !important;
+    }
+    .navbar-header{
+    	background:#171A21;
+    	height: 64px;
+    	min-width: 300px;
+    }
+    .navbar-brand{
+    	padding: 10px 10px !important;
+    }
+    #bs-example-navbar-collapse-1{
+    	background:#171A21;
+    }
+    .container-fluid{
+    	background:#171A21;
+    	color: #B8B6B4;
+    }
+    .navbar-default .navbar-nav>li>a{
+    	margin: 10px 10px;
+    	padding: 0;
+    	line-height: 44px;
+    }
+    .navbar-default{
+    	background:#171A21 !important;
+    	border: none !important;
+    }
+    .navbar-nav>li>a:hover{
+    	color: #FFFFFF !important;
+    }
+    #shangnav .open>a{
+    	background:#171A21 !important;
+    	color: #FFFFFF !important;
+    }
+    .container-fluid .dropdown-menu{
+    	background:#171A21;
+    }
+    .container-fluid .dropdown-menu li a{
+    	color: #FFFFFF;
+    }
+    #xianav{
+    	margin-top: 110px !important;
+    }
+    #xianav .container-fluid{
+    	background: none;
+    }
+    #xianav .navbar-nav li{
+    	background: #377593;
+    	margin-left: 1px;
+    	
+    }
+    .container-fluid .dropdown-menu{
+    	background:#377593;
+    }
+    #xianav .navbar-nav>li>a{
+    	color: #67C1F5;
+    }
+    #xianav .navbar-nav>.open>a{
+    	color: #FFF;
+    }
+    #xianav .nav>li>a:hover,#xianav .nav>li>a:focus,#xianav .open>a{
+    	background:#66C0F4;
+    	background: -webkit-linear-gradient(-45deg,#66C0F4,#386F93)!important;
+    }
+
+    #xianav .somls li{
+    	background: -webkit-linear-gradient(left, #377593 0%,#3C6A94 100%) !important;
+    }
+    #xianav .dropdown-menu>li>a:hover,#xianav .dropdown-menu>li>a:focus{
+    	background:#171A21;
+    	color: #FFFFFF;
+    }
+    .sousuo{
+    	padding:8px 8px;
+    	background: #377593;
+    	margin-left:1px;
+    }
+    .sousuo span{
+    	top: 0px;
+    	background: #5BC0DE;
+    	border: none;
+    }
+    .zhuxiao{
+	cursor: pointer;
+	padding-left: 20px;
+}
+.car{
+	position: absolute;
+	right: 15px;
+	top: -22px;
+	font-size: 11px;
+	color: #a4d007;
+	background:#516B24 ;
+	background-color: rgba( 164, 208, 7, 0.4 );
+	padding: 2px 10px;
+	border-radius:3px ;
+	cursor: pointer;
+}
+    
+.footer{
+	position: relative;
+	max-width: 1000px;
+	width: 100%;
+	margin: 30px auto;
+}
+.footer div{
+	color: #8F98A0;
+	font-size: 12px;
+	line-height: 12px;
+	position: absolute;
+}
+.footer .txt1{
+	top: 0;
+	left: 100px;
+}
+.footer .txt2{
+	top: 12px;
+	left: 100px;
+}
+.footer a{
+	color: #C6D4DF;
+}
+.footer a:hover{
+	color: #FFFFFF;
+}
+.footer .txt3{
+	margin-top:25px ;
+	font-size: 13px;
+}

@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>登录or注册</title>
+    <link rel="stylesheet" type="text/css" href="css/nav.css"/>
+    <!-- Bootstrap -->
+    <!--引入bootstrap的css文件-->
+    <link href="lib/bootstrap-3.3.0-dist/dist/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="css/loding.css"/>
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="lib/html5shiv-3.7.3/dist/html5shiv.min.js"></script>
+    <script src="lib/Respond-1.4.2/src/respond.js"></script>
+    <![endif]-->
+</head>
+<body class="container">
+<!--TODO-->
+<!--上导航栏-->
+<nav class="navbar navbar-default navbar-fixed-top" role="navigation" id="shangnav">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html"><img src="images/globalheader_logo.png"/></a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav somls">
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">商店<span class="caret"></span></a>
+          <ul class="dropdown-menu" role="menu">
+            <li><a href="javascript:;">精选</a></li>
+            <li><a href="javascript:;">探索</a></li>
+            <li><a href="javascript:;">鉴赏家</a></li>
+            <li><a href="javascript:;">愿望单</a></li>
+            <li><a href="javascript:;">新闻</a></li>
+            <li><a href="javascript:;">统计</a></li>
+          </ul>
+        </li>
+          <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">社区<span class="caret"></span></a>
+          <ul class="dropdown-menu" role="menu">
+            <li><a href="index.html">主页</a></li>
+            <li><a href="javascript:;">讨论</a></li>
+            <li><a href="javascript:;">创意工坊</a></li>
+            <li><a href="javascript:;">青睐之光</a></li>
+            <li><a href="javascript:;">市场</a></li>
+            <li><a href="javascript:;">实况直播</a></li>
+          </ul>
+        </li>
+        <li><a href="javascript:;">关于</a></li>
+        <li><a href="javascript:;">客服</a></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li class="user"><a href="javascript:;"><img style="width: 30px;height: 30px;" src="images/userhead/head.png"/><span>请登录</span></a>
+          <div class="zhuxiao">注销</div>
+        </li>
+        <li class="hidden-lg hidden-md hidden-sm"><a href="cart.html">购物车（<span class="cart">0</span>）</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<!--下导航栏-->
+<nav id="xianav" class="navbar" role="navigation">
+    <div class="container-fluid">
+    <div>
+        <ul class="nav navbar-nav">
+            <li class="jinxuan"><a href="javascript:;">精选物品</a></li>
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                	游戏
+                    <b class="caret"></b>
+                </a>
+                <ul class="dropdown-menu classs">
+                    <li><a href="javascript:;">休闲</a></li>
+                    <li><a href="javascript:;">体育</a></li>
+                    <li><a href="javascript:;">冒险</a></li>
+                    <li><a href="javascript:;">动作</a></li>
+                    <li><a href="javascript:;">模拟</a></li>
+                    <li><a href="javascript:;">独立</a></li>
+                    <li><a href="javascript:;">竞速</a></li>
+                    <li><a href="javascript:;">策略</a></li>
+                </ul>
+            </li>
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                	软件
+                    <b class="caret"></b>
+                </a>
+                <ul class="dropdown-menu">
+                    <li><a href="javascript:;">动画制作</a></li>
+                    <li><a href="javascript:;">实用工具</a></li>
+                    <li><a href="javascript:;">教育</a></li>
+                    <li><a href="javascript:;">游戏开发</a></li>
+                    <li><a href="javascript:;">照片编辑</a></li>
+                    <li><a href="javascript:;">网络出版</a></li>
+                    <li><a href="javascript:;">视频制作</a></li>
+                    <li><a href="javascript:;">设计 &nbsp; 插画</a></li>
+                    <li><a href="javascript:;">音频制作</a></li>
+                </ul>
+            </li>
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                	硬件
+                    <b class="caret"></b>
+                </a>
+                <ul class="dropdown-menu">
+                    <li><a href="javascript:;">Steam 控制器</a></li>
+                    <li><a href="javascript:;">Steam 流式盒</a></li>
+                    <li><a href="javascript:;">Steam 主机</a></li>
+                    <li><a href="javascript:;">HTC Vive</a></li>
+                </ul>
+            </li>
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                	视频
+                    <b class="caret"></b>
+                </a>
+                <ul class="dropdown-menu">
+                    <li><a href="javascript:;">剧情</a></li>
+                    <li><a href="javascript:;">动作</a></li>
+                    <li><a href="javascript:;">恐怖</a></li>
+                    <li><a href="javascript:;">动画</a></li>
+                    <li><a href="javascript:;">欢乐</a></li>
+                    <li><a href="javascript:;">游戏</a></li>
+                    <li><a href="javascript:;">科幻</a></li>
+                    <li><a href="javascript:;">教程</a></li>
+                </ul>
+            </li>
+            <li><a href="javascript:;">新闻</a></li>
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                	为您推荐
+                    <b class="caret"></b>
+                </a>
+                <ul class="dropdown-menu">
+                    <li><a href="javascript:;">最近查看过的</a></li>
+                    <li><a href="javascript:;">Steam 鉴赏家</a></li>
+                    <li><a href="javascript:;">最近更新</a></li>
+                </ul>
+            </li>
+            <form class="input-group sousuo">
+                <input type="text" class="form-control btn-info ">
+                <span class="input-group-addon glyphicon glyphicon-search"></span>
+            </form>
+        </ul>
+        <div class="car hidden-xs">购物车（<span class="cart">0</span>）</div>
+    </div>
+    </div>
+</nav>
+<!--导航结束-->
+
+<div class="container">
+	<div class="page_left col-lg-8 col-md-8 col-sm-12 col-xs-12">
+		<div class="left col-lg-6 col-md-6 col-sm-6 col-xs-12">
+			<h4>登录</h4>
+			<h5>到现有的 Steam 帐户</h5>
+			<label for="user">Steam 帐户名称</label><br/>
+			<input id="user" type="text" placeholder="输入您的账号"/><br/>
+			<label for="pass">密码</label><br/>
+			<input id="pass" type="password" placeholder="输入您的密码"/><br/>
+			<button id="loding">登录</button>
+			<button class="join hidden-sm hidden-md hidden-lg">加入我们</button>
+		</div>
+		<div class="right col-lg-6 col-md-6 col-sm-6 col-xs-12">
+			<h4>注册</h4>
+			<h5>创建一个全新的帐户</h5>
+			<label for="name">Steam 帐户名称</label><br/>
+			<input id="name" type="text" placeholder="输入您的账号"/><br/>
+			<label for="word">密码</label><br/>
+			<input id="word" type="password" placeholder="输入您的密码"/><br/>
+			<label for="password">再次输入密码</label><br/>
+			<input id="password" type="password" placeholder="输入您的密码"/><br/>
+			<label>选择您的头像</label><br/>
+			<select>
+				<option value="1">1</option>
+				<option value="2">2</option>
+				<option value="3">3</option>
+				<option value="4">4</option>
+				<option value="5">5</option>
+				<option value="6">6</option>
+				<option value="7">7</option>
+				<option value="8">8</option>
+				<option value="9">9</option>
+			</select>
+			<img style="width: 30px;height: 30px;" src="images/userhead/head1.png"/><br/>
+			<button id="register">登录</button>
+			<button class="join hidden-sm hidden-md hidden-lg">加入我们</button>
+		</div>
+	</div>
+	<div class="page_right col-lg-4 col-md-4 hidden-sm hidden-xs">
+		<h4>为什么加入 STEAM？</h4>
+		<ul>
+			<li>购买和下载完整零售游戏</li>
+			<li>加入 Steam 社区</li>
+			<li>游戏时与好友聊天</li>
+			<li>在任何电脑上都能玩</li>
+			<li>安排游戏、比赛或 LAN 聚会</li>
+			<li>获取自动游戏更新以及更多！</li>
+		</ul>
+		<img src="images/why_join_preview.png"/>
+	</div>
+</div>
+
+		<!--脚部分开始-->
+		<div class="footer">
+			<img src="images/logo_valve_footer.png"/><div class="txt1">
+				© 2016 Valve Corporation. <span class="hidden-xs">保留所有权利。所有商标均为其在美国及其它国家/地区的各自持有者所有。</span>
+			</div>
+			<div class="txt2">
+				所有的价格均已包含增值税（如适用）。&nbsp;  <a href="javascript:;">隐私政策</a> &nbsp; | &nbsp; <a href="javascript:;">法律信息</a> &nbsp; | &nbsp; <a href="javascript:;">Steam 用户协议</a> &nbsp; | &nbsp; <a href="javascript:;">退款</a>
+			</div>
+			<div class="txt3">
+				<a href="javascript:;">关于 Valve</a> &nbsp;|&nbsp; <a href="javascript:;">Steamworks</a> &nbsp;|&nbsp; <a href="javascript:;">工作</a> &nbsp;|&nbsp; <a href="javascript:;">Steam 分销</a> &nbsp;|&nbsp; <a href="javascript:;">礼物卡</a>
+			</div>
+		</div>
+		<!--脚部分结束-->
+
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="lib/jquery-1.12.4.js"></script>
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="lib/bootstrap-3.3.0-dist/dist/js/bootstrap.min.js"></script>
+<script src="js/nav.js" type="text/javascript" charset="utf-8"></script>
+<script src="js/loding.js" type="text/javascript" charset="utf-8"></script>
+</body>
+</html>

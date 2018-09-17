@@ -1,0 +1,89 @@
+	h1{
+		color: #FFFFFF;
+		text-shadow: 1px 1px 0 #000000;
+		font-size: 30px;
+        word-wrap: break-word;
+        padding-left: 10px;
+	}
+	.search_game{
+		
+	}
+	.search_game li{
+		padding: 15px 0;
+		position: relative;
+		height: 75px ;
+		margin-bottom: 2px;
+		background:#101822;
+		background: rgba( 0, 0, 0, 0.2 );
+	}
+	.search_game li img{
+		float: left;
+		position: absolute;
+		top: 15px;
+		left: 0;
+	}
+	.search_game li p{
+		float: left;
+		width: 100%;
+		padding-left: 120px;
+		line-height: 10px;
+		margin-top: 5px;
+        display: block;
+        text-overflow: ellipsis;
+        white-space:nowrap;
+        overflow: hidden;
+        color: #c7d5e0;
+        padding-right: 40px;
+	}
+	.search_game li i{
+		position: absolute;
+		top: 30px;
+		left: 120px;
+		width: 60px;
+		height: 20px;
+	}
+	.search_game li i img{
+		position: relative;
+	}
+	.search_game li label{
+		position: absolute;
+		color: #c6d4df;
+		display: inline-block;
+		top: 0;
+		right: 10px;
+		line-height: 75px;
+	}
+	.yema{
+		float: right;
+	}
+	.yema a{
+		margin: 5px;
+		padding: 5px 10px;
+		font-size: 18px;
+		border-radius: 2px;
+        border: none;
+        display: inline-block;
+        text-decoration: none !important;
+        color: #67c1f5 !important;
+        background: rgba( 103, 193, 245, 0.2 );
+	}
+	.yema a:hover,.yema a:focus{
+	    color: #fff !important;
+	    background: #146898;
+	        background: linear-gradient( -60deg, #417a9b 5%,#67c1f5 95%);
+	}
+	.clas h5{
+		color: #FFFFFF;
+	}
+	.clas button{
+		border-radius: 2px;
+        border: none;
+        padding: 1px;
+        display:block;
+        cursor: pointer;
+        color: #67c1f5 !important;
+        background:#146898;
+        background: rgba( 103, 193, 245, 0.2 );
+        margin: 5px;
+        padding: 5px 10px;
+	}
