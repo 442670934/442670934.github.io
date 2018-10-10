@@ -1,0 +1,161 @@
+{% extends 'layout.html' %}
+
+{% block main %}
+<h3>用户页面</h3>
+<form action="user" method="get" class="form-inline">
+    <label for="email"> 用户名: </label>
+    <input type="text" class="form-control" name='username' placeholder="输入要查找的用户名">
+    <label for="pwd"> 邮箱: </label>
+    <input type="email" class="form-control" name="email" placeholder="输入要查找的邮箱">
+    <div class="form-check">
+        <label class="form-check-label">
+            <input class="form-check-input" name='isAdmin' type="checkbox"> 是否管理员
+        </label>
+    </div>
+    <button type="submit" class="btn btn-primary">查找</button>
+    <a href="/admin/user" class="btn btn-success">重置</a>
+</form>
+<table class="table">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>用户名</th>
+        <th>昵称</th>
+        <th>邮箱</th>
+        <th>创建时间</th>
+        <th>isAdmin</th>
+        <th>冻结</th>
+        <th>操作</th>
+      </tr>
+    </thead>
+    <tbody>
+        {%for user in users%}
+            <tr class='{%if user.freeze%}table-secondary{%endif%}'>
+                <td>{{user._id.toString()}}</td>
+                <td>{{user.username}}</td>
+                <td>{{user.nickname}}</td>
+                <td>{{user.email}}</td>
+                <td data='{{user.addTime.toString()}}'>{{user.addTime|date('Y年m月d日 H:i:s', -8*60)}}</td>
+                <td>{%if user.isAdmin%}是{%else%}否{%endif%}</td>
+                <td>{%if user.freeze%}是{%else%}否{%endif%}</td>
+                <td>
+                    <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#modification">修改</button>
+                    {%if user.freeze%}
+                    <button type="button" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#freezeUser">解冻</button>
+                    {%else%}
+                    <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#freezeUser">冻结</button>
+                    {%endif%}
+                </td>
+              </tr>
+        {%endfor%}
+    </tbody>
+  </table>
+<!-- 修改单窗 -->
+<form action="user/edit" method="post">
+    <input type="hidden" class='id-input' name='id' value="">
+    <div class="modal fade" id="modification">
+    <div class="modal-dialog">
+        <div class="modal-content">
+    
+        <!-- 模态框头部 -->
+        <div class="modal-header">
+            <h4 class="modal-title">修改用户数据</h4>
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+    
+        <!-- 模态框主体 -->
+        <div class="modal-body">
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">用户名</span>
+                </div>
+                <input type="text" name='username' class="form-control modification-username">
+            </div>
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">昵称</span>
+                </div>
+                <input type="text" name='nickname' class="form-control modification-nickname">
+            </div>
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">邮箱</span>
+                </div>
+                <input type="email" name='email' class="form-control modification-email">
+            </div>
+        </div>
+    
+        <!-- 模态框底部 -->
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary modification-close" data-dismiss="modal">关闭</button>
+            <button type="submit" class="btn btn-primary">保存</button>
+        </div>
+    
+        </div>
+    </div>
+    </div>
+</form>
+<!-- 删除用户 -->
+<form id="freeze" action="user/freeze" method='post'>
+    <div class="modal fade" id="freezeUser" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="freezeUserTitle">是否要冻结用户</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">ID</span>
+                    </div>
+                    <input type="hidden" name='freezeUserId' class="form-control freezeUserId">
+                    <input disabled type="text" class="form-control freezeUserId">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">关闭</button>
+                <button type="submit" class="btn btn-danger">冻结用户</button>
+            </div>
+            </div>
+        </div>
+    </div>
+</form>
+
+
+<script>
+        $('button[data-target="#modification"]').on('click',function(){
+            var tdList = $(this).parents('tr').children('td');
+            var username = tdList.eq(1).text();
+            var nickname = tdList.eq(2).text();
+            var email = tdList.eq(3).text();
+            $('.id-input').val(tdList.eq(0).text())
+            $('.modification-username').val(username);
+            $('.modification-nickname').val(nickname);
+            $('.modification-email').val(email);
+        })
+        $('.modification-close').on('click',function(){
+            $('.id-input').val("");
+            $('.modification-username').val("");
+            $('.modification-nickname').val("");
+            $('.modification-email').val("");
+        })
+        $('button[data-target="#freezeUser"]').on('click',function(){
+            var userId = $(this).parents('tr').children('td');
+            if($(this).text() == '冻结'){
+                $('#freezeUserTitle').text('是否要冻结用户'+userId.eq(1).text())
+                $('#freezeUser .freezeUserId').val(userId.eq(0).text())
+                $('#freezeUser button[type="submit"]').attr('class','btn btn-danger').text('冻结用户')
+            }
+            else if($(this).text() == '解冻'){
+                $('#freezeUserTitle').text('是否要解冻用户'+userId.eq(1).text())
+                $('#freezeUser .freezeUserId').val(userId.eq(0).text())
+                $('#freezeUser button[type="submit"]').attr('class','btn btn-warning').text('解冻用户')
+            }
+        })
+    </script>
+{% include 'page.html' %}
+
+{% endblock %}

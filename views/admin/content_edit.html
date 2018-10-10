@@ -1,0 +1,59 @@
+{% extends 'layout.html' %}
+
+{% block main %}
+<h3>编辑文章 - {{content.title}}</h3>
+<hr>
+<table class="table">
+        <thead>
+          <tr>
+            <th scope="col">阅读量</th>
+            <th scope="col">收藏量</th>
+            <th scope="col">赞数量</th>
+            <th scope="col">创建时间</th>
+            <th scope="col">修改时间</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>{{content.views}}</td>
+            <td>{{content.collections}}</td>
+            <td>{{content.thumbsUp}}</td>
+            <td>{{content.addTime|date('Y年m月d日 H:i:s', -8*60)}}</td>
+            <td>{{content.changeTime|date('Y年m月d日 H:i:s', -8*60)}}</td>
+          </tr>
+        </tbody>
+      </table>
+<form role="form" method="post">
+    <input type="hidden" name='id' value="{{content.id}}">
+    <div class="form-group">
+        <label for="title">分类：</label>
+        <select name="category" class="form-control">
+            {%for category in categorys%}
+                {%if content.category._id.toString() == category._id.toString()%}
+                    <option value="{{category.id}}" selected>{{category.name}}</option>
+                {%else%}
+                    <option value="{{category.id}}">{{category.name}}</option>
+                {%endif%}
+            {%endfor%}
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label for="title">标题：</label>
+        <input type="text" value="{{content.title}}" class="form-control" placeholder="请输入内容标题" name="title">
+    </div>
+
+    <div class="form-group">
+        <label for="description">简介：</label>
+        <textarea name="description" class="form-control" rows="5" placeholder="请输入内容简介">{{content.description}}</textarea>
+    </div>
+
+    <div class="form-group">
+        <label for="content">内容：</label>
+        <textarea name="content" class="form-control" rows="10" placeholder="请输入内容">{{content.content}}</textarea>
+    </div>
+
+    <button type="submit" class="btn btn-default">提交</button>
+</form>
+
+{% endblock %}

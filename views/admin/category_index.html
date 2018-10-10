@@ -1,0 +1,144 @@
+{% extends 'layout.html' %}
+
+{% block main %}
+<h3>分类页面<button type="button" class="btn btn-info add-category" data-toggle="modal" data-target="#modification">创建新分类</button></h3>
+<form action="category" method="get" class="form-inline">
+    <label> 创建者: </label>
+    <input type="text" class="form-control" name="username" placeholder="输入要查找的创建者">
+    <label> 分类名: </label>
+    <input type="text" class="form-control" name="category" placeholder="输入要查找的分类名">
+    <button type="submit" class="btn btn-primary">查找</button>
+    <a href="/admin/category" class="btn btn-success">重置</a>
+</form>
+
+<table class="table">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>分类名</th>
+        <th>创建者</th>
+        <th>创建时间</th>
+        <th>冻结</th>
+        <th>操作</th>
+      </tr>
+    </thead>
+    <tbody>
+        {%for category in categorys%}
+            <tr class='{%if category.freeze%}table-secondary{%endif%}'>
+                <td>{{category._id.toString()}}</td>
+                <td>{{category.name}}</td>
+                <td>{{category.createrUser.username}}</td>
+                <td data='{{category.time.toString()}}'>{{category.time|date('Y年m月d日 H:i:s', -8*60)}}</td>
+                <td>{%if category.freeze%}是{%else%}否{%endif%}</td>
+                <td>
+                    <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#modification">修改</button>
+                    {%if category.freeze%}
+                    <button type="button" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#freeze">解冻</button>
+                    {%else%}
+                    <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#freeze">冻结</button>
+                    {%endif%}
+                </td>
+              </tr>
+        {%endfor%}
+    </tbody>
+  </table>
+<!-- 修改单窗 -->
+<form action="user/edit" method="post">
+    <input type="hidden" class='id-input' name='id' value="">
+    <div class="modal fade" id="modification">
+    <div class="modal-dialog">
+        <div class="modal-content">
+    
+        <!-- 模态框头部 -->
+        <div class="modal-header">
+            <h4 class="modal-title">修改用户数据</h4>
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+    
+        <!-- 模态框主体 -->
+        <div class="modal-body">
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">分类名称</span>
+                </div>
+                <input type="text" name='name' class="form-control modification-name">
+            </div>
+        </div>
+    
+        <!-- 模态框底部 -->
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary modification-close" data-dismiss="modal">关闭</button>
+            <button type="submit" class="btn btn-primary">保存</button>
+        </div>
+    
+        </div>
+    </div>
+    </div>
+</form>
+<!-- 删除用户 -->
+<form action="category/freeze" method='post'>
+    <div class="modal fade" id="freeze" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="freezeTitle">是否要冻结用户</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">ID</span>
+                    </div>
+                    <input type="hidden" name='freezeId' class="form-control freezeId">
+                    <input disabled type="text" class="form-control freezeId">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">关闭</button>
+                <button type="submit" class="btn btn-danger">冻结用户</button>
+            </div>
+            </div>
+        </div>
+    </div>
+</form>
+
+
+<script>
+        $('button[data-target="#modification"]').on('click',function(){
+            var formDoc = $('#modification').parent('form')
+            var modalTitle = $('#modification .modal-title');
+            if($(this).hasClass('add-category')){
+                formDoc.attr('action','category/add')
+                modalTitle.text('创建新分类')
+            }else{
+                formDoc.attr('action','category/edit')
+                modalTitle.text('修改名称分类')
+                var tdList = $(this).parents('tr').children('td');
+                var name = tdList.eq(1).text();
+                $('.id-input').val(tdList.eq(0).text())
+                $('.modification-name').val(name);
+            }
+        })
+        $('.modification-close').on('click',function(){
+            $('.id-input').val("");
+            $('.modification-name').val("");
+        })
+        $('button[data-target="#freeze"]').on('click',function(){
+            var _id = $(this).parents('tr').children('td');
+            if($(this).text() == '冻结'){
+                $('#freezeTitle').text('是否要冻结分类'+_id.eq(1).text())
+                $('#freeze .freezeId').val(_id.eq(0).text())
+                $('#freeze button[type="submit"]').attr('class','btn btn-danger').text('冻结分类')
+            }
+            else if($(this).text() == '解冻'){
+                $('#freezeTitle').text('是否要解冻分类'+_id.eq(1).text())
+                $('#freeze .freezeId').val(_id.eq(0).text())
+                $('#freeze button[type="submit"]').attr('class','btn btn-warning').text('解冻分类')
+            }
+        })
+    </script>
+{% include 'page.html' %}
+
+{% endblock %}

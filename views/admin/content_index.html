@@ -1,0 +1,120 @@
+{% extends 'layout.html' %}
+
+{% block main %}
+<h3>文章页面<a class="btn btn-info add-label" href="/admin/content/add">创建新文章</a></h3>
+<form action="content" method="get" class="form-inline">
+    <label> 创建者: </label>
+    <input type="text" class="form-control" name="username" placeholder="输入要查找的创建者">
+    <label> 标题: </label>
+    <select name="label" class="form-control">
+            <option value=""> </option>
+            {%for label in labels%}
+            <option value="{{label.id}}">{{label.name}}</option>
+            {%endfor%}
+        </select>
+    <label> 分类: </label>
+    <select name="category" class="form-control">
+        <option value=""> </option>
+        {%for category in categorys%}
+        <option value="{{category.id}}">{{category.name}}</option>
+        {%endfor%}
+    </select>
+    <button type="submit" class="btn btn-primary">查找</button>
+    <a href="/admin/content" class="btn btn-success">重置</a>
+</form>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>分类名称</th>
+            <th>标题</th>
+            <th>作者</th>
+            <th>添加时间</th>
+            <th>最后修改时间</th>
+            <th>阅读量</th>
+            <th>冻结</th>
+            <th>操作</th>
+        </tr>
+    </thead>
+    <tbody>
+        {%for content in contents%}
+            <tr class='{%if content.freeze%}table-secondary{%endif%}'>
+                <td>{{content.id}}</td>
+                <td>{{content.category.name}}</td>
+                <td>{{content.title}}</td>
+                <td>{{content.user.username}}</td>
+                <td>{{content.addTime|date('Y年m月d日 H:i:s', -8*60)}}</td>
+                <td>{{content.changeTime|date('Y年m月d日 H:i:s', -8*60)}}</td>
+                <td>{{content.views}}</td>
+                <td>{%if content.freeze%}是{%else%}否{%endif%}</td>
+                <td>
+                    <a class="btn btn-primary btn-sm" href='/admin/content/edit?id={{content.id}}'>修改</a>
+                    {%if content.freeze%}
+                    <button type="button" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#freeze">解冻</button>
+                    {%else%}
+                    <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#freeze">冻结</button>
+                    {%endif%}
+                    <button type="button" class="btn btn-dark btn-sm" data-toggle="modal" data-target="#freeze">删除</button>
+                </td>
+              </tr>
+        {%endfor%}
+    </tbody>
+  </table>
+<!-- 删除用户 -->
+<form action="content/freeze" method='post'>
+    <div class="modal fade" id="freeze" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="freezeTitle">是否要冻结用户</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">ID</span>
+                    </div>
+                    <input type="hidden" name='freezeId' class="form-control freezeId">
+                    <input disabled type="text" class="form-control freezeId">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">关闭</button>
+                <button type="submit" class="btn btn-danger">冻结用户</button>
+            </div>
+            </div>
+        </div>
+    </div>
+</form>
+
+
+<script>
+    $('button[data-target="#freeze"]').on('click',function(){
+        var formDoc = $('#freeze').parent('form')
+        var _id = $(this).parents('tr').children('td');
+        if($(this).text() == '冻结'){
+            formDoc.attr('action','content/freeze')
+            $('#freezeTitle').text('是否要冻结文章'+_id.eq(1).text())
+            $('#freeze .freezeId').val(_id.eq(0).text())
+            $('#freeze button[type="submit"]').attr('class','btn btn-danger').text('冻结文章')
+        }
+        else if($(this).text() == '解冻'){
+            formDoc.attr('action','content/freeze')
+            $('#freezeTitle').text('是否要解冻文章'+_id.eq(1).text())
+            $('#freeze .freezeId').val(_id.eq(0).text())
+            $('#freeze button[type="submit"]').attr('class','btn btn-warning').text('解冻文章')
+        }
+        else if($(this).text() == '删除'){
+            formDoc.attr('action','content/delete')
+            $('#freezeTitle').text('是否要删除文章'+_id.eq(1).text())
+            $('#freeze .freezeId').val(_id.eq(0).text())
+            $('#freeze button[type="submit"]').attr('class','btn btn-warning').text('删除文章')
+        }
+    })
+</script>
+{% include 'page.html' %}
+
+{% endblock %}

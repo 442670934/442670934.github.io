@@ -1,0 +1,22 @@
+{
+  "name": "jhblog",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "cookie-parser": "^1.4.3",
+    "cookies": "^0.7.1",
+    "express": "^4.16.3",
+    "mongoose": "^5.2.6",
+    "nodemailer": "^4.6.8",
+    "nodemailer-smtp-transport": "^2.7.4",
+    "swig": "^1.4.2"
+  }
+}
